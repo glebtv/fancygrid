@@ -30,7 +30,7 @@ $fg_border_separator2        : 1px solid #ffffff;
           font-weight : bold;
           padding     : 0px;
           border-right: $fg_border;
-          background  : url('/images/fancygrid/th_bg.png');
+          background  : image-url('fancygrid/th_bg.png');
           white-space : nowrap;
           .fg-head-wrapper{
             padding     : 5px 10px 5px 10px;
@@ -40,27 +40,27 @@ $fg_border_separator2        : 1px solid #ffffff;
           .fg-order-tag {
             display: block;
             cursor : pointer;
-            //background: url('/images/fancygrid/dots.png') no-repeat scroll 50% 0% transparent;
+            //background: image-url('fancygrid/dots.png') no-repeat scroll 50% 0% transparent;
           }        
         }
         th[order='DESC'] {
           .fg-order-tag {
-            background: url('/images/fancygrid/dn.png') no-repeat scroll 50% 0% transparent;
+            background: image-url('fancygrid/dn.png') no-repeat scroll 50% 0% transparent;
           }
         }
         th[order='DESC']:hover {
           .fg-order-tag{
-            background: url('/images/fancygrid/ddn.png') no-repeat scroll 50% 0% transparent;
+            background: image-url('fancygrid/ddn.png') no-repeat scroll 50% 0% transparent;
           }
         }
         th[order='ASC'] {
           .fg-order-tag{
-            background: url('/images/fancygrid/up.png') no-repeat scroll 50% 0% transparent;
+            background: image-url('fancygrid/up.png') no-repeat scroll 50% 0% transparent;
           }
         }
         th[order='ASC']:hover {
           .fg-order-tag{
-            background: url('/images/fancygrid/uup.png') no-repeat scroll 50% 0% transparent;
+            background: image-url('fancygrid/uup.png') no-repeat scroll 50% 0% transparent;
           }
         }
         th:last-child, td:last-child {
@@ -196,55 +196,55 @@ $fg_border_separator2        : 1px solid #ffffff;
     padding-bottom: 3px;
     
     &.fg-first{
-      background: url('/images/fancygrid/first.png') no-repeat;
+      background: image-url('fancygrid/first.png') no-repeat;
     }
     
     &.fg-last{
-      background: url('/images/fancygrid/last.png') no-repeat;
+      background: image-url('fancygrid/last.png') no-repeat;
     }
     
     &.fg-next{
-      background: url('/images/fancygrid/next.png') no-repeat;
+      background: image-url('fancygrid/next.png') no-repeat;
     }
     
     &.fg-previous{
-      background: url('/images/fancygrid/prev.png') no-repeat;
+      background: image-url('fancygrid/prev.png') no-repeat;
     }
     
     &.fg-reload{
-      background: url('/images/fancygrid/reload.png') no-repeat;
+      background: image-url('fancygrid/reload.png') no-repeat;
     }
     
     &.fg-clear{
-      background: url('/images/fancygrid/clear.png') no-repeat;
+      background: image-url('fancygrid/clear.png') no-repeat;
     }
     
     &.fg-magnify{
-      background: url('/images/fancygrid/magnifier.png') no-repeat;
+      background: image-url('fancygrid/magnifier.png') no-repeat;
     }
     
     &.fg-sort{
-      background: url('/images/fancygrid/order.png') no-repeat;
+      background: image-url('fancygrid/order.png') no-repeat;
     }
     
     &.loading{
-      background: url('/images/fancygrid/loading.gif') no-repeat;
+      background: image-url('fancygrid/loading.gif') no-repeat;
     }
     
     &.new{
-      background: url('/images/fancygrid/add.png') no-repeat;
+      background: image-url('fancygrid/add.png') no-repeat;
     }
     
     &.fg-search-add{
-      background: url('/images/fancygrid/add.png') no-repeat;
+      background: image-url('fancygrid/add.png') no-repeat;
     }
     
     &.fg-search-remove{
-      background: url('/images/fancygrid/remove.png') no-repeat;
+      background: image-url('fancygrid/remove.png') no-repeat;
     }
     
     &.fg-search-submit{
-      background: url('/images/fancygrid/submit.png') no-repeat;
+      background: image-url('fancygrid/submit.png') no-repeat;
     }
   }
 

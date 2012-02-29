@@ -2,44 +2,22 @@ module Fancygrid
   module Generators#:nodoc:
     
     class InstallGenerator < Rails::Generators::Base#:nodoc:
-
+      source_root File.expand_path('../../..', __FILE__)
       def copy_initializer
-        plugin_path = File.join(File.dirname(__FILE__), "../../config/initializers/fancygrid.rb")
-        rails_path = Rails.root.join('config/initializers/fancygrid.rb')
+        plugin_path = "config/initializers/fancygrid.rb"
+        rails_path = Rails.root.join("config/initializers/fancygrid.rb")
         copy_file(plugin_path, rails_path)
       end
     
       def copy_default_cells_view
-        plugin_path = File.join(File.dirname(__FILE__), "../../app/views/fancygrid/_cells.html.haml")
+        plugin_path = "app/views/fancygrid/_cells.html.haml"
         rails_path = Rails.root.join("app/views/fancygrid/_cells.html.haml")
         copy_file(plugin_path, rails_path)
       end
       
-      def copy_javascript_source
-        js_source = File.join(File.dirname(__FILE__), '../../public/javascripts/fancygrid.js')
-        js_target = Rails.root.join('public/javascripts/fancygrid.js')
-        copy_file(js_source, js_target)
-      end
-      
-      def copy_css
-        %w(css scss).each do |ext|
-          js_source = File.join(File.dirname(__FILE__), "../../public/stylesheets/fancygrid.#{ext}")
-          js_target = Rails.root.join("public/stylesheets/fancygrid.#{ext}")
-          copy_file(js_source, js_target)
-        end
-      end
-      
-      def copy_images
-        %w(add.png clear.png ddn.png dn.png dots.png loading.gif magnifier.png next.png order.png prev.png reload.png remove.png spacer.gif submit.png th_bg.png up.png uup.png).each do |filename|
-          plugin_path = File.join(File.dirname(__FILE__), "../../public/images/fancygrid", filename)
-          rails_path = Rails.root.join('public/images/fancygrid', filename)
-          copy_file(plugin_path, rails_path)
-        end
-      end
-
       def copy_locale
         %w(de en).each do |locale|
-          plugin_path = File.join(File.dirname(__FILE__), "../../config/locales/fancygrid.#{locale}.yml")
+          plugin_path = "config/locales/fancygrid.#{locale}.yml"
           rails_path = Rails.root.join("config/locales/fancygrid.#{locale}.yml")
           copy_file(plugin_path, rails_path)
         end
