@@ -3,7 +3,13 @@ require "version"
 require "fancygrid/helper"
 require "fancygrid/node"
 require "fancygrid/grid"
-require "fancygrid/query_generator"
+
+if defined?(Mongoid)
+  require "fancygrid/query_generator"
+else
+  require "fancygrid/mongoid_query_generator"
+end
+
 require "fancygrid/view"
 
 module Fancygrid

@@ -175,8 +175,11 @@ module Fancygrid#:nodoc:
         :pagination => params[:pagination],
         :operator => params[:operator]
       }
-      
-      generator = Fancygrid::QueryGenerator.new(url_options, self)
+      if defined?(Mongoid)
+        generator = Fancygrid::MongoidQueryGenerator.new(url_options, self)
+      else
+        generator = Fancygrid::QueryGenerator.new(url_options, self)
+      end
       generator.parse_options(options)
       yield(generator) if block_given?
       
@@ -198,7 +201,12 @@ module Fancygrid#:nodoc:
     # Runs the current query and caches the resulting data
     #
     def query_for_data
-      if self.record_klass < ActiveRecord::Base
+      if defined?(Mongoid::Document) && self.record_klass < Mongoid::Document
+        p self.query
+        rsp = self.record_klass.where(self.query[:conditions])
+        self.dataset = rsp.order_by(self.query[:order]).skip(self.query[:offset]).limit(self.query[:limit])
+        self.resultcount = rsp.count
+      elsif self.record_klass < ActiveRecord::Base
         self.dataset = self.record_klass.find(:all, self.query)
         
         count_query = self.query.reject do |k, v| 
@@ -210,7 +218,7 @@ module Fancygrid#:nodoc:
         self.dataset = self.record_klass.find(:all, :params => self.query)
         self.resultcount = self.dataset.delete_at(self.dataset.length - 1).total
       else
-        raise "Unable to query for data. Supported base classes are 'ActiveRecord::Base' and 'ActiveResource::Base' but '#{self.record_klass}' was given"
+        raise "Unable to query for data. Supported base classes are 'Mongoid::Document', 'ActiveRecord::Base' and 'ActiveResource::Base' but '#{self.record_klass}' was given"
       end
       
       self.resultcount = self.resultcount.length  if self.resultcount.respond_to?(:length)
