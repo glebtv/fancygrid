@@ -122,7 +122,7 @@ module Fancygrid
     def fancygrid_button name, translate_scope, default, alt=nil
       title = I18n.t(translate_scope, :default => default, :scope => Fancygrid.i18n_scope)
       alt ||= title
-      image_tag('/images/fancygrid/spacer.gif', :size => '16x16', :class => "#{name} fg-button", :title => title, :alt => title ).html_safe
+      image_tag('fancygrid/spacer.gif', :size => '16x16', :class => "#{name} fg-button", :title => title, :alt => title ).html_safe
     end
   end
 
