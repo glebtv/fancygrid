@@ -1,3 +1,5 @@
+This is a fork to support rails 3.1+ asset pipline.
+
 = Fancygrid
 Fancygrid mades it easy to create and render tables for database records in rails.
 == Features
@@ -15,16 +17,13 @@ Fancygrid mades it easy to create and render tables for database records in rail
 = Requirements
 * jQuery >= 1.4.2
 * jQuery-ui (required if column sorting is wanted)
-* Rails 3
+* Rails 3.2
 * Haml
 
 = Installation
 In your gemfile
-    gem 'fancygrid', :git => 'git://github.com/giniedp/fancygrid.git'
+    gem 'fancygrid', :git => 'git://github.com/glebtv/fancygrid.git'
 
-or for specific tag
-    gem 'fancygrid', :git => 'git://github.com/giniedp/fancygrid.git', :tag => "1.0.0-pre"
-    
 Run
     bundle install
     
