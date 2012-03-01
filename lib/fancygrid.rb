@@ -4,11 +4,8 @@ require "fancygrid/helper"
 require "fancygrid/node"
 require "fancygrid/grid"
 
-if defined?(Mongoid)
-  require "fancygrid/query_generator"
-else
-  require "fancygrid/mongoid_query_generator"
-end
+require "fancygrid/query_generator"
+require "fancygrid/mongoid_query_generator"
 
 require "fancygrid/view"
 

@@ -1,9 +1,9 @@
-This is a fork to support rails 3.1+ asset pipline.
+This is a fork to support rails 3.1+ asset pipline and some support for mongoid.
 
 = Fancygrid
 Fancygrid mades it easy to create and render tables for database records in rails.
 == Features
-* ActiveRecord and ActiveResource are supported
+* ActiveRecord and ActiveResource are supported. Partial support for mongoid (test yourself)
 * Ajax data fetch
 * Pagination
 * Simple search with LIKE condition

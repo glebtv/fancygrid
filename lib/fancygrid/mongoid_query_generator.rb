@@ -17,7 +17,7 @@ module Fancygrid
       self.query = {}
       self.fancygrid = grid
       
-      self.select(options[:select])
+      # self.select(options[:select])
       self.apply_pagination(options[:pagination])
       self.apply_search_conditions(options[:operator] || :and, options[:conditions])
       self.apply_sort_order(options[:order])
@@ -37,7 +37,7 @@ module Fancygrid
       options ||= {}
       options = ActiveSupport::HashWithIndifferentAccess.new(options)
       self.limit(options[:per_page].to_i)
-      self.skip(options[:page].to_i * self.limit())
+      self.offset(options[:page].to_i * self.limit())
     end
     
     # Takes a hash like { :column => "users.name", :order => "asc" } and translates it into the :order option and
@@ -52,18 +52,33 @@ module Fancygrid
     #
     def apply_search_conditions(operator, search_conditions)
       return unless search_conditions
+      
+      search_conditions = search_conditions.map do |table, columns|
+        columns.map do |column, value|
+          # for hashes like this
+          # :<table> => { 
+          #   :<column> => <value>
+          # }
+          #
+          unless value.blank?
+            op = (fancygrid and fancygrid.simple_search_operator(table, column) or :like).to_s
+            { :column => column, :operator => op, :value => value } 
+          else 
+            nil
+          end
+        end
+      end
       search_conditions = search_conditions.flatten
       
       conditions = {}
-      
-      
       search_conditions.each do |options|
         next unless options
+        p options
         condition = get_condition(options[:column], options[:operator], options[:value])
-        conditions = join_conditions(:and, conditions, condition)
+        conditions = join_conditions(operator, conditions, condition)
       end
       
-      conditions
+      self.query[:conditions] = conditions
     end
     
     # Joins two conditions arrays or strings with the given operator

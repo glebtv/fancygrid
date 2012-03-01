@@ -202,10 +202,9 @@ module Fancygrid#:nodoc:
     #
     def query_for_data
       if defined?(Mongoid::Document) && self.record_klass < Mongoid::Document
-        p self.query
         rsp = self.record_klass.where(self.query[:conditions])
         self.dataset = rsp.order_by(self.query[:order]).skip(self.query[:offset]).limit(self.query[:limit])
-        self.resultcount = rsp.count
+        self.resultcount = rsp.count - 1
       elsif self.record_klass < ActiveRecord::Base
         self.dataset = self.record_klass.find(:all, self.query)
         
